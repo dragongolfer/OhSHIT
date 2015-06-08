@@ -55,3 +55,23 @@ class Player:
 		self.hit
 
 class Computer(Player):
+
+
+
+
+"""
+#Pygame test for reading input
+import pygame, sys
+from pygame.locals import *
+
+pygame.init()
+pygame.display.set_mode((200,200))
+
+while True:
+    for event in pygame.event.get():
+        if event.type == QUIT: sys.exit()
+        if event.type == KEYDOWN:
+            print event.dict['key']
+            print 'break'
+    pygame.event.pump()
+"""
