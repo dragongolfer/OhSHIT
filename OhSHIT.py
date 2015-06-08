@@ -48,13 +48,21 @@ print x.brand, x.processor, x.ram, x.diskspace
 class Player:
 	def __init__(self, weapons):
 		self.health = 100
-		self.weapons = []
+		self.weapons = ["RubberBand Shot", "Ruler Slap"]
 		self.power_up_avaliable = []
 		self.armor_active = True/False
-		self.power_active
-		self.hit
+		self.power_active = 0
+		self.hit_percent = 0
 
 class Computer(Player):
+	self.special_weapon = ["CDshot", "Core Meltdown"]
+
+	def select_attack(self, special_weapon):
+
+	def select_power_up(self, power_up_avaliable):
+
+	def
+
 
 
 
