@@ -67,7 +67,7 @@ class Player:
         return self.weapons
     
     #updates the health to 100%.
-    def get_full_health(self):
+    def setFullHealth(self):
         self.health  = 100
         return self.health
 
