@@ -88,8 +88,7 @@ player2_weapons = []
 
 for weapon in player1.weapons:
     player1_weapons.append(weapon)
-print player1_weapons
-
+print player1_weaponsgoogle 
 for weapon in player2_weapons:
     player2_weapons.append(weapon)
 print player2_weapons
