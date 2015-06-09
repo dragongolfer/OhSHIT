@@ -4,15 +4,18 @@
 # devCodeCamp - Brookfield, WI
 # Team Helium
 
-from playerClass import Player
+from playerClass import *
+from endFunction import *
+#from user_control import *
 import random
+import os
+
 
 
 
 #################################
 # Game Initialization Functions #
 #################################
-
 def requestPlayerName(playerNumber):
     playerName = raw_input("Player " + str(playerNumber) + " -- what is your name? - ")
     return "ACE"
@@ -32,14 +35,11 @@ def requestPlayerType(availableCharacters):
 ############################
 # Screen Display Functions #
 ############################
-def printStartUpScreen():
-    pass
+def clearScreen():    
+    if not DEBUG:
+        os.system('cls')
     return
-    
-def printRules():
-    pass
-    return
-    
+
 def printScoreBoard(playerList):
     pass
     return
@@ -68,14 +68,14 @@ def checkForDeath(playerList):
     return False
 
 
-
+###############
+# Game Engine #
+###############
 
 def main():
-    ###################
-    # Initialize Game #
-    ###################
-    printStartUpScreen()
-    printRules()
+    # game = user_control()
+    # game.spinUp()
+
     availableCharacters = ["granola","notebook","backpack","computer"]
 
     #Play Again Loop. First match is pre-set to True.
@@ -139,7 +139,7 @@ def main():
         ###############
 
         # Print Winner Screen
-        printWinnerScreen()
+        endSequence(winner, loser)
         
         # Print Game Over Screen
         printGameOverScreen()
@@ -150,13 +150,7 @@ def main():
         # Same characters?
         sameCharacters #= Same Characters Question Function
 
-
-
-
-
-
-
-
-
-DEBUG = True
-main()
+        
+if __name__ == "__main__":
+    DEBUG = True
+    main()
