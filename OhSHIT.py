@@ -1,85 +1,121 @@
-"""
-class Dice:
-	def __init__(self, sides):
-		self.sides = sides
+# 6/9/2015
+# OhSHIT! Game
+#
+# devCodeCamp - Brookfield, WI
+# Team Helium
 
-	def set_sides(self):
-		return self.sides
-"""
-"""
-class Fucks_Given:
-	Fuck_Counter = 0
-	def __init__(self, fucks):
-		self.fucks = fucks
+import Player from playerClass.py
+import random
 
-	def add_fucks(self):
-		Fuck_Counter = Fuck_Counter + 1
-		return Fuck_Counter
 
-	def rem_fucks(self):
-		Fuck_Counter = Fuck_Counter - 1
-		return Fuck_Counter
 
-	def get_fucks(self):
-		return self.fucks
-"""
+#################################
+# Game Initialization Functions #
+#################################
 
-"""
-class Computer:
-	def __init__(self, brand, processor, ram, disk):
-		self.brand = brand
-		self.processor = processor
-		self.ram = ram
-		self.diskspace = disk
+#request player character choice
 
-	def sel_brand(self, brand):
-		return sel_brand
-
-	def sel_processor(self, processor):
-		return sel_processor
-
-	def sel_ram(self, ram):
-		return sel_ram
-
-x = Computer("Dell", "Intel", "16", "1tb")
-print x.brand, x.processor, x.ram, x.diskspace
-"""
-#This is where the code actually starts, the others are examples I made
-class Player:
-	def __init__(self, weapons):
-		self.health = 100
-		self.weapons = ["RubberBand Shot", "Ruler Slap"]
-		self.power_up_avaliable = []
-		self.armor_active = True/False
-		self.power_active = 0
-		self.hit_percent = 0
-
-class Computer(Player):
-	self.special_weapon = ["CDshot", "Core Meltdown"]
-
-	def select_attack(self, special_weapon):
-
-	def select_power_up(self, power_up_avaliable):
-
-	def
+#set/reset player healths(?)
 
 
 
 
 
-"""
-#Pygame test for reading input
-import pygame, sys
-from pygame.locals import *
+############################
+# Screen Display Functions #
+############################
+def printStartUpScreen():
+    pass
+    return
+    
+def printRules():
+    pass
+    return
+    
 
-pygame.init()
-pygame.display.set_mode((200,200))
+    
+################################
+# Game Engine Helper Functions #
+################################
 
-while True:
-    for event in pygame.event.get():
-        if event.type == QUIT: sys.exit()
-        if event.type == KEYDOWN:
-            print event.dict['key']
-            print 'break'
-    pygame.event.pump()
-"""
+def checkForDeath(playerList):
+    pass
+    return False
+
+
+
+def main()
+    ###################
+    # Initialize Game #
+    ###################
+    printStartUpScreen()
+    printRules()
+
+    #Initialize players
+    playerList = []
+    for i in range(0,2):
+        player = Player("granola")
+        playerList.append(player)
+        ##Set Player to full health
+        
+    #Choose who goes first (at random)
+    activePlayerIndex = random.randint(0,1)
+
+    
+
+
+
+
+
+    ##################
+    # Main Game Loop #
+    ##################
+    gameOver = false
+    while not gameOver:
+        ActivePlayer = playerList[activePlayerIndex]
+        DefendingPlayer = playerList[1-activePlayerIndex]
+        
+
+        #Choose Weapon
+        weapon = ActivePlayer#.selectWeaponMethod()
+
+        #Choose Powerup
+        powerUp = ActivePlayer#.selectPowerUpMethod()
+        
+        #Make Attack
+        attackDamage = ActivePlayer#.makeAttackMethod(weapon, powerUp)
+
+        #Adjust Health of opponent
+        DefendingPlayer.#adjustHealthMethod(attackDamage)
+        
+        #Display Scoreboard
+        printScoreBoard(playerList)
+        
+        #Check Players if either are dead
+        gameOver = checkForDeath(playerList)
+        
+
+
+
+    ###############
+    # End of Game #
+    ###############
+
+    # Print Winner Screen
+    
+    # Print Game Over Screen
+    
+    # Play again?
+    # Same characters?
+
+
+
+
+
+
+
+
+
+
+
+main()
