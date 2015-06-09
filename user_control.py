@@ -55,3 +55,6 @@ class user_control:
 			print "<6> ???"
 			decision = str(raw_input("^>> "))
 			return decision
+
+uc = user_control()
+uc.spin_up()
