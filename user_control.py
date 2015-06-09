@@ -1,6 +1,7 @@
 #Import libraries we need
 import sys
 import random
+from OhSHIT import *
 
 #Declare any variables we might need
 
@@ -40,9 +41,10 @@ class user_control:
 		else:
 			self.quitter()
 
-	def quitter(self):
-		print self.quit
-		self.game_running = False
+
+    def quitter(self):
+        print self.quit
+        self.game_running = False
 
 	def rules(self):
 		print "These are the rules of OHShit! \nNow dont fuck up"
@@ -78,5 +80,8 @@ class user_control:
 			except ValueError:
 				print "\nThat is not currently a valid choice broheim, try again \nand lets see if you get it right!\n"
 
-uc = user_control()
-uc.spin_up()
+            
+if __name__ == "__main__":
+    ui = user_control()
+    ui.spin_up()
+

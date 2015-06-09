@@ -4,118 +4,153 @@
 # devCodeCamp - Brookfield, WI
 # Team Helium
 
-import Player from playerClass.py
+from playerClass import *
+from endFunction import *
+#from user_control import *
 import random
+import os
+
 
 
 
 #################################
 # Game Initialization Functions #
 #################################
-
-#request player character choice
-
-#set/reset player healths(?)
-
+def requestPlayerName(playerNumber):
+    playerName = raw_input("Player " + str(playerNumber) + " -- what is your name? - ")
+    return "ACE"
 
 
+def requestPlayerType(availableCharacters):
+    print("Which character do you want to play?")
+    print availableCharacters
+    playerType = raw_input("-- ")
+    if playerType in availableCharacters:
+        return playerType
+    else:
+        print("Sorry, that's not a valid character. Please pick from the list above.")
+        return requestPlayerType(availableCharacters)
 
 
 ############################
 # Screen Display Functions #
 ############################
-def printStartUpScreen():
-    pass
+def clearScreen():    
+    if not DEBUG:
+        os.system('cls')
     return
-    
-def printRules():
-    pass
-    return
-    
 
+def printScoreBoard(playerList):
+    pass
+    return
+
+def printWinnerScreen():
+    pass
+    return
+    
+def printGameOverScreen():
+    pass
+    return
+    
+def debug(message):
+    if DEBUG:
+        print(">>DEBUG: " + str(message))
+    return
     
 ################################
 # Game Engine Helper Functions #
 ################################
 
 def checkForDeath(playerList):
-    pass
+    for each in playerList:
+        if each.get_health() < 0:
+            return True
     return False
 
 
+###############
+# Game Engine #
+###############
 
-def main()
-    ###################
-    # Initialize Game #
-    ###################
-    printStartUpScreen()
-    printRules()
+def main():
+    # game = user_control()
+    # game.spinUp()
 
-    #Initialize players
-    playerList = []
-    for i in range(0,2):
-        player = Player("granola")
-        playerList.append(player)
-        ##Set Player to full health
+    availableCharacters = ["granola","notebook","backpack","computer"]
+
+    #Play Again Loop. First match is pre-set to True.
+    playAgain = True
+    needToInitializePlayers = True
+    while playAgain:
+        playAgain = False
         
-    #Choose who goes first (at random)
-    activePlayerIndex = random.randint(0,1)
-
-    
-
-
-
-
-
-    ##################
-    # Main Game Loop #
-    ##################
-    gameOver = false
-    while not gameOver:
-        ActivePlayer = playerList[activePlayerIndex]
-        DefendingPlayer = playerList[1-activePlayerIndex]
+        #Initialize players
+        if needToInitializePlayers:
+            playerList = []
+            for i in range(0,2):
+                playerName = requestPlayerName(i+1)
+                playerType = requestPlayerType(availableCharacters)
+                player = Player(playerType)
+                playerList.append(player)
+                
         
+        #Set Players to full health
+        for each in playerList:
+            each.setFullHealth()
+            
+        #Choose who goes first (at random)
+        activePlayerIndex = random.randint(0,1)
 
-        #Choose Weapon
-        weapon = ActivePlayer#.selectWeaponMethod()
 
-        #Choose Powerup
-        powerUp = ActivePlayer#.selectPowerUpMethod()
         
-        #Make Attack
-        attackDamage = ActivePlayer#.makeAttackMethod(weapon, powerUp)
+        ##################
+        # Main Game Loop #
+        ##################
+        gameOver = False
+        while not gameOver:
+            debug("Main loop running")
+            ActivePlayer = playerList[activePlayerIndex]
+            DefendingPlayer = playerList[1-activePlayerIndex]
+            
 
-        #Adjust Health of opponent
-        DefendingPlayer.#adjustHealthMethod(attackDamage)
+            #Choose Weapon
+            weapon = ActivePlayer#.selectWeaponMethod()
+
+            #Choose Powerup
+            powerUp = ActivePlayer#.selectPowerUpMethod()
+            
+            #Make Attack
+            attackDamage = ActivePlayer#.makeAttackMethod(weapon, powerUp)
+
+            #Adjust Health of opponent
+            DefendingPlayer#.adjustHealthMethod(attackDamage)
+            
+            #Display Scoreboard
+            printScoreBoard(playerList)
+            
+            #Check Players if either are dead
+            gameOver = checkForDeath(playerList)
+            
+
+
+
+        ###############
+        # End of Game #
+        ###############
+
+        # Print Winner Screen
+        endSequence(winner, loser)
         
-        #Display Scoreboard
-        printScoreBoard(playerList)
+        # Print Game Over Screen
+        printGameOverScreen()
         
-        #Check Players if either are dead
-        gameOver = checkForDeath(playerList)
+        # Play again?
+        playAgain #= Play Again Function
         
+        # Same characters?
+        sameCharacters #= Same Characters Question Function
 
-
-
-    ###############
-    # End of Game #
-    ###############
-
-    # Print Winner Screen
-    
-    # Print Game Over Screen
-    
-    # Play again?
-    # Same characters?
-
-
-
-
-
-
-
-
-
-
-
-main()
+        
+if __name__ == "__main__":
+    DEBUG = True
+    main()
