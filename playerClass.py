@@ -63,8 +63,11 @@ class Player:
     def get_powerups(self):
         return self.powerups
 
-    def get_weapons():
+    def get_weapons(self):
         return self.weapons
+        
+    def get_name(self):
+        return self.name
     
     #updates the health to 100%.
     def setFullHealth(self):
@@ -73,11 +76,13 @@ class Player:
 
     #gets attack value based on character weapon choosen from dictionary(weapon_list)
     def get_attack_damage(self,weapon):
+        ###Add stuff for checking if you have a powerUp
         weapon_attack = self.weapons[weapon][0]
         return weapon_attack
 
     #gets probability of success from character weapon choosen from dictionary(weapon_list)
     def get_attack_probability(self,weapon):
+        ###Add stuff for checking if you have a powerUp
         weapon_prob = self.weapons[weapon][1]
         return weapon_prob
 
@@ -103,8 +108,8 @@ class Player:
             self.power_active = False
   
     #uses powerup and changes powerup status to active, else prints none available
-    def use_power_up(self,powerup_list,powerup_choice):
-        power_up_length = len(powerup_list)
+    def use_power_up(self,powerup_choice):
+        power_up_length = len(self.powerups)
         if power_up_length > 0:
             if powerup_choice == "Power":
                 self.update_power()
@@ -118,7 +123,8 @@ class Player:
     #retrieves damage and probability potential of hit from weapon given
     #a random number is generated and if that number is less than the probability, a hit is awarded.
     #damage is then returned, else 0 damage is returned.
-    def attack(self,weapon):
+    def attack(self,weapon, powerUp):
+
         attack_damage = self.get_attack_damage(weapon)
         attack_probability = self.get_attack_probability(weapon)*100
         print "attack Probability", attack_probability
@@ -128,6 +134,11 @@ class Player:
             return attack_damage
         else:
             return 0
+            
+    def damagePlayer(self, amount):
+        ###Add stuff for checking if you have an armor powerup
+        self.health -= amount
+        return
 
 
 class Weapon:
