@@ -1,7 +1,7 @@
 #Import libraries we need
 import sys
 import random
-from OhSHIT import *
+#from OhSHIT import *
 
 #Declare any variables we might need
 
@@ -42,24 +42,14 @@ class user_control:
 			self.quitter()
 
 
-    def quitter(self):
-        print self.quit
-        self.game_running = False
+	def quitter(self):
+		print self.quit
+		self.game_running = False
 
 	def rules(self):
 		print "These are the rules of OHShit! \nNow dont fuck up"
 		print "Each Player enters their name and selects their characters"
 		print "Each character can be used multiple times"
-		p
-
-
-"""This is where the various stat menus will populate and generate from 
-	def sub_menu(self):
-		stat_menu = True
-		while stat_menu:
-			print "These are dem stats you asked for"
-"""
-
 
 	def terminal(self):
 		terminal = True
@@ -80,6 +70,13 @@ class user_control:
 			except ValueError:
 				print "\nThat is not currently a valid choice broheim, try again \nand lets see if you get it right!\n"
 
+
+"""This is where the various stat menus will populate and generate from 
+	def sub_menu(self):
+		stat_menu = True
+		while stat_menu:
+			print "These are dem stats you asked for"
+"""
             
 if __name__ == "__main__":
     ui = user_control()
