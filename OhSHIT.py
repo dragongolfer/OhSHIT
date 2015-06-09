@@ -13,12 +13,20 @@ import random
 # Game Initialization Functions #
 #################################
 
-#request player character choice
+def requestPlayerName(playerNumber):
+    playerName = raw_input("Player " + str(playerNumber) + " -- what is your name? - ")
+    return "ACE"
 
-#set/reset player healths(?)
 
-
-
+def requestPlayerType(availableCharacters):
+    print("Which character do you want to play?")
+    print availableCharacters
+    playerType = raw_input("-- ")
+    if playerType in availableCharacters:
+        return playerType
+    else:
+        print("Sorry, that's not a valid character. Please pick from the list above.")
+        return requestPlayerType(availableCharacters)
 
 
 ############################
@@ -35,6 +43,14 @@ def printRules():
 def printScoreBoard(playerList):
     pass
     return
+
+def printWinnerScreen():
+    pass
+    return
+    
+def printGameOverScreen():
+    pass
+    return
     
 def debug(message):
     if DEBUG:
@@ -46,8 +62,11 @@ def debug(message):
 ################################
 
 def checkForDeath(playerList):
-    pass
+    for each in playerList:
+        if each.get_health() < 0:
+            return True
     return False
+
 
 
 
@@ -57,6 +76,7 @@ def main():
     ###################
     printStartUpScreen()
     printRules()
+    availableCharacters = ["granola","notebook","backpack","computer"]
 
     #Play Again Loop. First match is pre-set to True.
     playAgain = True
@@ -68,7 +88,9 @@ def main():
         if needToInitializePlayers:
             playerList = []
             for i in range(0,2):
-                player = Player("granola")
+                playerName = requestPlayerName(i+1)
+                playerType = requestPlayerType(availableCharacters)
+                player = Player(playerType)
                 playerList.append(player)
                 
         
@@ -79,16 +101,11 @@ def main():
         #Choose who goes first (at random)
         activePlayerIndex = random.randint(0,1)
 
+
         
-
-
-
-
-
         ##################
         # Main Game Loop #
         ##################
-
         gameOver = False
         while not gameOver:
             debug("Main loop running")
@@ -122,8 +139,10 @@ def main():
         ###############
 
         # Print Winner Screen
+        printWinnerScreen()
         
         # Print Game Over Screen
+        printGameOverScreen()
         
         # Play again?
         playAgain #= Play Again Function
