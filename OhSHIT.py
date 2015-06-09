@@ -4,7 +4,7 @@
 # devCodeCamp - Brookfield, WI
 # Team Helium
 
-import Player from playerClass.py
+import Player from playerClass
 import random
 
 
