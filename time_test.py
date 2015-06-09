@@ -5,7 +5,7 @@ import sys, time, msvcrt #msvcrt allows keystrokes to be read.
 #and breaks out of loop if an input has not been given.
 def readInput( caption, default, timeout = 15):
     start_time = time.time()
-    sys.stdout.write('%s(%s):'%(caption, default));
+    sys.stdout.write('%s[Default=%s]:'%(caption, default));
     input = ''
     while True:
         if msvcrt.kbhit(): #kbhit functuion returns true if a key is hit
@@ -21,8 +21,10 @@ def readInput( caption, default, timeout = 15):
     if len(input) > 0:
         return input
     else:
-        return 'Ruler Slap'#this returns default value for weapon if the user can't select in the appropriate time.
+        return default #this returns default value for weapon if the user can't select in the appropriate time.
 
-# and some examples of usage
-ans = readInput('Please select a weapon', 'Default = Ruler Slap') 
-print 'The name is %s' % ans
+        
+if __name__ == "__main__":
+    # and some examples of usage
+    ans = readInput('Please select a weapon', 'Ruler Slap') 
+    print 'The name is %s' % ans

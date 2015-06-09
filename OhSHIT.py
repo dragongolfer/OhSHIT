@@ -4,13 +4,11 @@
 # devCodeCamp - Brookfield, WI
 # Team Helium
 
-<<<<<<< HEAD
-import Player from playerClass
-=======
 from playerClass import *
 from endFunction import *
+from time_test import *
 #from user_control import *
->>>>>>> 77c6d0bd81ffa248e2d46fd1f75cec29dc3d5163
+
 import random
 import os
 
@@ -22,7 +20,7 @@ import os
 #################################
 def requestPlayerName(playerNumber):
     playerName = raw_input("Player " + str(playerNumber) + " -- what is your name? - ")
-    return "ACE"
+    return playerName
 
 
 def requestPlayerType(availableCharacters):
@@ -40,8 +38,8 @@ def requestPlayerType(availableCharacters):
 # Screen Display Functions #
 ############################
 def clearScreen():    
-    if not DEBUG:
-        os.system('cls')
+    os.system('cls')
+        
     return
 
 def printScoreBoard(playerList):
@@ -71,6 +69,20 @@ def checkForDeath(playerList):
             return True
     return False
 
+def requestWeaponChoice(player):
+    options = player.get_weapons()
+    weapon = readInput('Please select a weapon ', 'Ruler Slap')
+    if weapon in options:
+        return weapon
+    else:
+        print("Sorry, that is not an available option, please select one from the list above:")
+        return requestWeaponChoice(player)
+
+    
+def requestPowerupChoice(player):
+    options = player.get_powerups()
+    powerUp = readInput('Do you want to use a powerup? ', '')
+    return powerUp
 
 ###############
 # Game Engine #
@@ -94,7 +106,7 @@ def main():
             for i in range(0,2):
                 playerName = requestPlayerName(i+1)
                 playerType = requestPlayerType(availableCharacters)
-                player = Player(playerType)
+                player = Player(playerName,playerType)
                 playerList.append(player)
                 
         
@@ -111,31 +123,40 @@ def main():
         # Main Game Loop #
         ##################
         gameOver = False
+        winner = 0
+        loser = 0
         while not gameOver:
             debug("Main loop running")
             ActivePlayer = playerList[activePlayerIndex]
             DefendingPlayer = playerList[1-activePlayerIndex]
-            
 
             #Choose Weapon
-            weapon = ActivePlayer#.selectWeaponMethod()
+            clearScreen()
+            print(ActivePlayer.get_name() +", it's your turn! You have these weapons available.")
+            print(ActivePlayer.get_weapons())
+            weapon = requestWeaponChoice(ActivePlayer)
 
             #Choose Powerup
-            powerUp = ActivePlayer#.selectPowerUpMethod()
+            print(ActivePlayer.get_name() +", you have these power ups available.")
+            print(ActivePlayer.get_powerups())
+            powerUp = requestPowerupChoice(ActivePlayer)
             
             #Make Attack
-            attackDamage = ActivePlayer#.makeAttackMethod(weapon, powerUp)
+            attackDamage = ActivePlayer.attack(weapon, powerUp)
 
             #Adjust Health of opponent
-            DefendingPlayer#.adjustHealthMethod(attackDamage)
+            DefendingPlayer.damagePlayer(attackDamage)
             
             #Display Scoreboard
             printScoreBoard(playerList)
             
             #Check Players if either are dead
             gameOver = checkForDeath(playerList)
-            
+            winner = ActivePlayer.get_name()
+            loser = DefendingPlayer.get_name()
 
+            #Next Player
+            activePlayerIndex = 1-activePlayerIndex
 
 
         ###############
@@ -143,16 +164,9 @@ def main():
         ###############
 
         # Print Winner Screen
-        endSequence(winner, loser)
-        
-        # Print Game Over Screen
-        printGameOverScreen()
-        
-        # Play again?
-        playAgain #= Play Again Function
-        
-        # Same characters?
-        sameCharacters #= Same Characters Question Function
+        playAgain = endSequence(winner, loser)
+
+
 
         
 if __name__ == "__main__":
