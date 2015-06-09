@@ -4,9 +4,13 @@
 # devCodeCamp - Brookfield, WI
 # Team Helium
 
+<<<<<<< HEAD
+import Player from playerClass
+=======
 from playerClass import *
 from endFunction import *
 #from user_control import *
+>>>>>>> 77c6d0bd81ffa248e2d46fd1f75cec29dc3d5163
 import random
 import os
 
