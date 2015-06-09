@@ -52,7 +52,7 @@ class Player:
     def get_weapons():
     	return self.weapons
     
-    updates the health based on if damage is incurred or a power up is taken. damage keyword can be changed.
+    #updates the health based on if damage is incurred or a power up is taken. damage keyword can be changed.
     def update_health(self,type_health,amount_health):
         if type_health == "damage":
     	    self.health -= amount_health
@@ -78,16 +78,25 @@ class Weapon:
 
 
 #checking calls to see class is working properly
-player1 = raw_input("Select a character: ")
+player1 = raw_input("Select a character Player 1: ")
 player1 = Player(player1)
 player1_weapons = []
+
+player2 = raw_input("Select a character Player 2: ")
+player2 = Player(player2)
+player2_weapons = []
+
 for weapon in player1.weapons:
     player1_weapons.append(weapon)
-print player1_weapons
+print player1_weaponsgoogle 
+for weapon in player2_weapons:
+    player2_weapons.append(weapon)
+print player2_weapons
 
 player1.add_powerup_count()
 player1.add_powerup_count()
 player1.add_powerup_count()
+player2.add_powerup_count()
 print player1.get_health()
 print player1.get_attack_damage("Ruler Slap")
 print player1.get_attack_probability("Ruler Slap")
