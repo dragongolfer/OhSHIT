@@ -49,7 +49,7 @@ class user_control:
 	def rules(self):
 		print "These are the rules of OHShit! \nNow dont fuck up"
 		print "Each Player enters their name and selects their characters"
-		print "Each character can be used multiple times"
+		print "Each character can be used multiple times \nEx: granola vs granola"
 
 	def terminal(self):
 		terminal = True
@@ -76,6 +76,7 @@ class user_control:
 		stat_menu = True
 		while stat_menu:
 			print "These are dem stats you asked for"
+			print "character stats"
 """
             
 if __name__ == "__main__":
