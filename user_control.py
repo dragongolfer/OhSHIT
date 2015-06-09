@@ -9,7 +9,7 @@ import random
 class user_control:
 	def __init__(self):
 		self.game_running = True #This statement will be in a (while game_running) loop that is basically the game, to end the game just set to false
-		self.quit = "Giving up so soon puny human? \n See you soon!"
+		self.quit = "Giving up so soon puny human? \nSee you soon!"
 		self.game_logic = None #This is where the main game function will go to be called upon initalization and start the game
 
 	def spin_up(self):
@@ -18,22 +18,24 @@ class user_control:
 		if ye_or_ne.lower() == "ye":
 			while self.game_running:
 				decision = self.terminal()
-				if decision == "1":
+				if decision == 1:
 					char_stats = raw_input("What characters stats would you like to see? >>")
 					#pass this input into the function that calls up the characters stats
 					#blank for now, function needs to be built
-				elif decision == "2":
-					print "rules"
+				elif decision == 2:
+					self.rules()
+					#print "rules"
 					# build a function that contains a list of all the rules and call it if this option is selected
-				elif decision == "3":
+				elif decision == 3:
 					print "Starting the game"
 					#call the function that initalizes the game here
-				elif decision == "4":
+				elif decision == 4:
 					print "Here are the scores from the last game played"
 					#print the previous game scores from an array that saves them as long as the program is running
-				elif decision == "5":
-					self.quitter() #this will print the quit message and end the program
-				elif decision == "6":
+				elif decision == 5:
+					self.quitter() 
+					#this will print the quit message and end the program
+				elif decision == 6:
 					print "You fell for it hahahahhahaha"
 		else:
 			self.quitter()
@@ -41,6 +43,21 @@ class user_control:
 	def quitter(self):
 		print self.quit
 		self.game_running = False
+
+	def rules(self):
+		print "These are the rules of OHShit! \nNow dont fuck up"
+		print "Each Player enters their name and selects their characters"
+		print "Each character can be used multiple times"
+		p
+
+
+"""This is where the various stat menus will populate and generate from 
+	def sub_menu(self):
+		stat_menu = True
+		while stat_menu:
+			print "These are dem stats you asked for"
+"""
+
 
 	def terminal(self):
 		terminal = True
@@ -53,8 +70,13 @@ class user_control:
 			print "<4> Or you can view the scores from the previous game"
 			print "<5> Quit the game"
 			print "<6> ???"
-			decision = str(raw_input("^>> "))
-			return decision
+			print "\n"
+			try:
+				decision = raw_input("^>> ")
+				decision = int(decision)
+				return decision
+			except ValueError:
+				print "\nThat is not currently a valid choice broheim, try again \nand lets see if you get it right!\n"
 
 uc = user_control()
 uc.spin_up()
