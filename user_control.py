@@ -1,7 +1,8 @@
 #Import libraries we need
 import sys
 import random
-#from OhSHIT import *
+import os
+from OhSHIT import *
 
 #Declare any variables we might need
 
@@ -20,38 +21,50 @@ class user_control:
 			while self.game_running:
 				decision = self.terminal()
 				if decision == 1:
+					self.clear()
+					print "\n"
 					char_stats = raw_input("What characters stats would you like to see? >>")
 					#pass this input into the function that calls up the characters stats
 					#blank for now, function needs to be built
 				elif decision == 2:
+					self.clear()
+					print "\n"
 					self.rules()
-					#print "rules"
-					# build a function that contains a list of all the rules and call it if this option is selected
-				elif decision == 3:
+					print "\n"
+					#function built, lists rules
+				elif decision == 3:#This works
+					self.clear()
 					print "Starting the game"
-					#call the function that initalizes the game here
+					main()
+					#main starts the game
 				elif decision == 4:
 					print "Here are the scores from the last game played"
 					#print the previous game scores from an array that saves them as long as the program is running
-				elif decision == 5:
+				elif decision == 5:#quits the game
+					self.clear()
 					self.quitter() 
 					#this will print the quit message and end the program
 				elif decision == 6:
 					print "You fell for it hahahahhahaha"
+				#elif decision == 7:
 		else:
-			self.quitter()
+		    self.quitter()
 
 
-	def quitter(self):
+	def quitter(self):#function that quits the game
 		print self.quit
 		self.game_running = False
 
-	def rules(self):
+	def rules(self):#contains the rules
 		print "These are the rules of OHShit! \nNow dont fuck up"
 		print "Each Player enters their name and selects their characters"
 		print "Each character can be used multiple times \nEx: granola vs granola"
 
-	def terminal(self):
+	def clear(self):#clears the screen
+		os.system("cls")
+		return
+
+	def terminal(self):#displays the main menu
 		terminal = True
 		while terminal:
 			print "Welcome to OHShit!"
