@@ -129,11 +129,11 @@ class Player:
 
     #toggles update power powerup to true or false based on previous value - power value not used.
     def change_increase_chance(self):
-        if self.perfect_chance == False:
-            self.perfect_chance = True
+        if self.increase_chance_active == False:
+            self.increase_chance_active = True
             self.powerups.remove("Increase Chance")
         else:
-            self.perfect_chance = False
+            self.increase_chance_active = False
             
 
     #uses powerup and changes powerup status to active, else prints none available
@@ -145,7 +145,7 @@ class Player:
             elif powerup_choice == "Health":
                 self.setFullHealth()
             elif powerup_choice == "Increase Chance":
-                self.change_perfect_chance()
+                self.change_increase_chance()
             else:
                 self.change_increase_hit()
         else:
