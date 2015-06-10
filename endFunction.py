@@ -3,6 +3,7 @@ def endSequence(winner, loser):
 	playAgain = (raw_input("Play again? Y/N >")).lower()
 	if playAgain == "y":
 		print "New Battle!"
-		#masterIntro()
+		return True
 	else:
 		print "Game Over"
+        return False
