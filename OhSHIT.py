@@ -5,7 +5,6 @@
 # Team Helium
 
 from playerClass import *
-from endFunction import *
 from time_test import *
 #from user_control import *
 
@@ -88,6 +87,17 @@ def requestPowerupChoice(player):
     else:
         print("Sorry, that is not an available option, please select one from the list above:")
         return requestPowerupChoice(player)
+###function below from endFunction.py
+def endSequence(winner, loser):
+    print loser + " loses! " + winner + " is the Champion!"
+    playAgain = (raw_input("Play again? Y/N >")).lower()
+    if playAgain == "y":
+        print "New Battle!"
+        return True
+    else:
+        print "Game Over"
+        return False
+
 
 ###############
 # Game Engine #
@@ -134,6 +144,14 @@ def main():
 
             #Choose Weapon
             clearScreen()
+            #shows player1 health
+            health_statement = ActivePlayer.get_name() + " Health: " + ": " + str(ActivePlayer.get_health())
+            print (health_statement)
+            #shows player2 health
+            health_statement = DefendingPlayer.get_name() + " Health: " + ": " + str(DefendingPlayer.get_health())
+            print (health_statement)
+
+
             print(ActivePlayer.get_name() +", it's your turn! You have these weapons available.")
             print(ActivePlayer.get_weapons())
             weapon = requestWeaponChoice(ActivePlayer)

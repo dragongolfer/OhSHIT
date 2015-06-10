@@ -40,9 +40,13 @@ class user_control:
 					winnerlist, loserlist = main()
 					#main starts the game
 				elif decision == 4:
-					print "Here are the scores from the last game played"
-					print winnerlist[-1].get_name()
-					#print the previous game scores from an array that saves them as long as the program is running
+					self.clear()
+					if len(winnerlist) > 0:
+						print "Last Winner: "
+						print winnerlist[-1].get_name()
+						#print the previous game winner from an array that saves them as long as the program is running
+					else:
+						print "No Winner to Display"
 				elif decision == 5:#quits the game
 					self.clear()
 					self.quitter() 
