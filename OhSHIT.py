@@ -144,6 +144,14 @@ def main():
 
             #Choose Weapon
             clearScreen()
+            #shows player1 health
+            health_statement = ActivePlayer.get_name() + " Health: " + ": " + str(ActivePlayer.get_health())
+            print (health_statement)
+            #shows player2 health
+            health_statement = DefendingPlayer.get_name() + " Health: " + ": " + str(DefendingPlayer.get_health())
+            print (health_statement)
+
+
             print(ActivePlayer.get_name() +", it's your turn! You have these weapons available.")
             print(ActivePlayer.get_weapons())
             weapon = requestWeaponChoice(ActivePlayer)
