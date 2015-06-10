@@ -86,6 +86,13 @@ class Player:
         weapon_prob = self.weapons[weapon][1]
         return weapon_prob
 
+
+class Weapon:
+	def __init__(self,name,attack,percent):
+		self.name = name
+		self.attack_value = attack
+		self.percent = percent
+
     #toggles armor powerup to true or false based on previous value
     def change_armor(self):
         if self.armor_active == False:
@@ -146,21 +153,3 @@ class Weapon:
         self.name = name
         self.attack_value = attack
         self.percent = percent
-
-#checking calls to see class is working properly
-# player1 = raw_input("Select a character Player 1: ")
-# player1 = Player("Ryan",player1)
-# player1_weapons = []
-
-# player2 = raw_input("Select a character Player 2: ")
-# player2 = Player("Charlie",player2)
-# player2_weapons = []
-
-# player1.add_powerup_count()
-# player1.add_powerup_count()
-# player1.add_powerup_count()
-# print player1.get_powerups()
-# powerups_list = ["Armor"]
-# player1.use_power_up(powerups_list,"Armor")
-# print player1.attack("Ruler Slap")
-
