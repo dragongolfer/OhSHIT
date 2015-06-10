@@ -39,7 +39,7 @@ class user_control:
 					print "Starting the game"
 					winnerlist, loserlist = main()
 					#main starts the game
-				elif decision == 4:
+				elif decision == 4:#this works
 					self.clear()
 					if len(winnerlist) > 0:
 						print "Last Winner: "
