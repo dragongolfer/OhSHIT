@@ -55,6 +55,7 @@ def printGameOverScreen():
     return
     
 def debug(message):
+    DEBUG = False
     if DEBUG:
         print(">>DEBUG: " + str(message))
     return
@@ -93,14 +94,13 @@ def requestPowerupChoice(player):
 ###############
 
 def main():
-    # game = user_control()
-    # game.spinUp()
-
     availableCharacters = ["granola","notebook","backpack","computer"]
 
     #Play Again Loop. First match is pre-set to True.
     playAgain = True
     needToInitializePlayers = True
+    winner = []
+    loser = []
     while playAgain:
         playAgain = False
         
@@ -127,8 +127,6 @@ def main():
         # Main Game Loop #
         ##################
         gameOver = False
-        winner = 0
-        loser = 0
         while not gameOver:
             debug("Main loop running")
             ActivePlayer = playerList[activePlayerIndex]
@@ -144,9 +142,11 @@ def main():
             print(ActivePlayer.get_name() +", you have these power ups available.")
             print(ActivePlayer.get_powerups())
             powerUp = requestPowerupChoice(ActivePlayer)
+            if powerUp != "":
+                ActivePlayer.use_power_up(powerUp)
             
             #Make Attack
-            attackDamage = ActivePlayer.attack(weapon, powerUp)
+            attackDamage = ActivePlayer.attack(weapon)
 
             #Adjust Health of opponent
             DefendingPlayer.damagePlayer(attackDamage)
@@ -156,8 +156,10 @@ def main():
             
             #Check Players if either are dead
             gameOver = checkForDeath(playerList)
-            winner = ActivePlayer.get_name()
-            loser = DefendingPlayer.get_name()
+            if gameOver:
+                winner.append(ActivePlayer)
+                loser.append(DefendingPlayer)
+                debug("Appending to Winner/Loser List")
 
             #Next Player
             activePlayerIndex = 1-activePlayerIndex
@@ -168,11 +170,13 @@ def main():
         ###############
 
         # Print Winner Screen
-        playAgain = endSequence(winner, loser)
-
-
+        playAgain = endSequence(winner[-1].get_name(), loser[-1].get_name())
+    
+    debug(str(winner[0].get_name()))
+    debug(str(loser[0].get_name()))
+    return winner, loser
 
         
 if __name__ == "__main__":
-    DEBUG = True
+    
     main()
