@@ -75,28 +75,3 @@ class Weapon:
 		self.name = name
 		self.attack_value = attack
 		self.percent = percent
-
-
-#checking calls to see class is working properly
-player1 = raw_input("Select a character Player 1: ")
-player1 = Player(player1)
-player1_weapons = []
-
-player2 = raw_input("Select a character Player 2: ")
-player2 = Player(player2)
-player2_weapons = []
-
-for weapon in player1.weapons:
-    player1_weapons.append(weapon)
-print player1_weaponsgoogle 
-for weapon in player2_weapons:
-    player2_weapons.append(weapon)
-print player2_weapons
-
-player1.add_powerup_count()
-player1.add_powerup_count()
-player1.add_powerup_count()
-player2.add_powerup_count()
-print player1.get_health()
-print player1.get_attack_damage("Ruler Slap")
-print player1.get_attack_probability("Ruler Slap")
