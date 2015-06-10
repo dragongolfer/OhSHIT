@@ -108,13 +108,6 @@ class Player:
             self.change_increase_chance()
         return weapon_prob
 
-
-class Weapon:
-    def __init__(self,name,attack,percent):
-        self.name = name
-        self.attack_value = attack
-        self.percent = percent
-
     #toggles armor powerup to true or false based on previous value
     def change_armor(self):
         if self.armor_active == False:
