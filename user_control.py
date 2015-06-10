@@ -17,6 +17,8 @@ class user_control:
 	def spin_up(self):
 		ye_or_ne = str(raw_input("Would you like to play OHShit!?! [ye or ne] >> "))
 		decision = None
+		winnerlist = []
+		loserlist = []
 		if ye_or_ne.lower() == "ye":
 			while self.game_running:
 				decision = self.terminal()
@@ -35,10 +37,11 @@ class user_control:
 				elif decision == 3:#This works
 					self.clear()
 					print "Starting the game"
-					main()
+					winnerlist, loserlist = main()
 					#main starts the game
 				elif decision == 4:
 					print "Here are the scores from the last game played"
+					print winnerlist[-1].get_name()
 					#print the previous game scores from an array that saves them as long as the program is running
 				elif decision == 5:#quits the game
 					self.clear()
