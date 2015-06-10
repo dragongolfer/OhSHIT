@@ -56,9 +56,16 @@ class user_control:
 		self.game_running = False
 
 	def rules(self):#contains the rules
-		print "These are the rules of OHShit! \nNow dont fuck up"
-		print "Each Player enters their name and selects their characters"
-		print "Each character can be used multiple times \nEx: granola vs granola"
+		print "-These are the rules of OHShit! \nNow dont fuck up as you humans often do."
+		print "-Each Player(you incase you didnt get that part) \nenters their name and selects their characters"
+		print "-Each character can be used multiple times \nEx: granola vs granola"
+		print "-The starting health is 100 points, and you have to choose your weapon"
+		print "-Careful though, because not all weapons are the same(see stats if you want idgaf)"
+		print "-Make sure you choose quickly, there is a time limit \non coice or you have to use the standard weapon to fight"
+		print "-And I dont like your odds in the first place \nyou need all the help you can get"
+		print "-Thats why there are powerups! USE THEM! AND WISELY"
+		print "-ENJOY, dont fuck up too bad."
+
 
 	def clear(self):#clears the screen
 		os.system("cls")
