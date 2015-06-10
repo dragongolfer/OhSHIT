@@ -82,7 +82,11 @@ def requestWeaponChoice(player):
 def requestPowerupChoice(player):
     options = player.get_powerups()
     powerUp = readInput('Do you want to use a powerup? ', '')
-    return powerUp
+    if powerUp in options or powerUp == "":
+        return powerUp
+    else:
+        print("Sorry, that is not an available option, please select one from the list above:")
+        return requestPowerupChoice(player)
 
 ###############
 # Game Engine #
